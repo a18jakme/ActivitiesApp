@@ -22,7 +22,17 @@ public class mountain {
     }
 
     public String getLocation() {
-        return location;
+        String l = "Position: "+location;
+        return l;
+    }
+
+    public void setHeight(int h) {
+        this.height = h;
+    }
+
+    public String getHeight() {
+        String hojd = "Höjd: "+String.valueOf(height)+" meter över havet";
+        return hojd;
     }
 
     public String info(){

@@ -22,6 +22,8 @@ public class MainActivity extends AppCompatActivity {
     private int[] mountainHeights ={4478,4808,6190};
     private ArrayList<mountain> bergslista;
     public static final String EXTRA_MESSAGE = "com.example.brom.activitiesapp.extra.MESSAGE";
+    public static final String EXTRA_MESSAGE1 = "com.example.brom.activitiesapp.extra.MESSAGE1";
+    public static final String EXTRA_MESSAGE2 = "com.example.brom.activitiesapp.extra.MESSAGE2";
 
     // Create ArrayLists from the raw data above and use these lists when populating your ListView.
 
@@ -45,8 +47,10 @@ public class MainActivity extends AppCompatActivity {
         myListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                String mountaininfo = bergslista.get(position).info();
-                sendstring(view, mountaininfo);
+                String mountaininfo = bergslista.get(position).toString();
+                String mountaininfo1= bergslista.get(position).getLocation();
+                String mountaininfo2= bergslista.get(position).getHeight();
+                sendstring(view, mountaininfo, mountaininfo1,mountaininfo2);
             }
         });
 
@@ -74,9 +78,11 @@ public class MainActivity extends AppCompatActivity {
         //    left arro button. This is done by letting the MainActivity be the parent activity to
         //    MountainDetailsActivity.
     }
-    public void sendstring (View view, String mountaininfo){
+    public void sendstring (View view, String mountaininfo, String mountaininfo1, String mountaininfo2){
         Intent iNtent = new Intent(getApplicationContext(), Main2Activity.class);
         iNtent.putExtra(EXTRA_MESSAGE, mountaininfo);
+        iNtent.putExtra(EXTRA_MESSAGE1, mountaininfo1);
+        iNtent.putExtra(EXTRA_MESSAGE2, mountaininfo2);
         startActivity(iNtent);
     }
 
